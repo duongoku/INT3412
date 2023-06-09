@@ -1,6 +1,7 @@
-from flask import Flask, json, render_template, request
+from flask import Flask, render_template, request
 from flask_cors import CORS, cross_origin
 import api as backend
+import os
 import threading
 
 app = Flask(__name__)
@@ -28,5 +29,7 @@ def index():
 
 
 if __name__ == "__main__":
+    if not os.path.exists("temp"):
+        os.makedirs("temp")
     backend.init()
     app.run()
